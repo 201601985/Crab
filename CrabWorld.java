@@ -10,6 +10,8 @@ public class CrabWorld extends World
 {
     ScoreCounter scorecounter = new ScoreCounter();
     Worm worm = new Worm();
+    private long lastTime = System.currentTimeMillis();
+    private long elapsedTime = 0;
     /**
      * Constructor for objects of class CrabWorld.
      * 
@@ -20,8 +22,6 @@ public class CrabWorld extends World
         super(600, 400, 1);
         addObject(scorecounter, 42, 17);
         addObject(new Crab(), 150, 150);
-        generateWorm();
-        
     }
    
     public ScoreCounter getScoreCounter(){
@@ -35,4 +35,13 @@ public class CrabWorld extends World
         addObject(new Worm(), xpos, ypos);
     }
     
+    public void act(){
+       long currentTime = System.currentTimeMillis();
+       elapsedTime += currentTime - lastTime;
+       if(elapsedTime >= 15000){
+           generateWorm();
+           lastTime = currentTime;
+           elapsedTime = 0;
+        }
+    }
 }

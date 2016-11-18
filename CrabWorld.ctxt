@@ -8,4 +8,6 @@ comment2.params=
 comment2.target=ScoreCounter\ getScoreCounter()
 comment3.params=
 comment3.target=void\ generateWorm()
-numComments=4
+comment4.params=
+comment4.target=void\ act()
+numComments=5
